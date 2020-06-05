@@ -8,4 +8,3 @@
 	{"Nome":"Gabriella","Sesso":"F","Eta":27,"Titolo":4},
   {"Nome":"Irene", "Sesso":"F","Eta":24,"Titolo":4}
 ]
-

@@ -72,7 +72,9 @@ function visualizzaDati()
 	}
 	tab.appendChild(tabella);
 }
+
 var visibile = false;
+
 function contaPerSesso(){
 	if(!visibile){
 		visibile = !visibile;
@@ -80,19 +82,14 @@ function contaPerSesso(){
 		var f = 0;
 		for (var i in dati)
 			{
-				for (var x in dati[i])
-				{
-					if(x == "Sesso"){
-						if(dati[i][x] == "F"){
-							f++;				
-						}
-						else
-							m++;
-					}
+				if(dati[i]["Sesso"] == "F"){
+					f++;				
 				}
+				else
+					m++;
 			}
 		var ms = "Maschi: ";
-		var fe = "Femmine: "
+		var fe = "Femmine: ";
 		document.getElementById("dati2").innerHTML = ms+m+" "+fe+f;
 	}
 	else{
@@ -104,40 +101,16 @@ var visibile2 = false;
 function contaPerTitolo(){
 	if(!visibile2){
 		visibile2 = !visibile2;
-		var a = 0;
-		var an = "Analfabeta: ";
-		var le = 0;
-		var lie = "Licenza elem.: ";
-		var lm = 0;
-		var lim = "Licenza media: ";
-		var d = 0;
-		var di = "Dipolma: ";
-		var la = 0;
-		var lau = "Laurea: ";
+		var np = [0,0,0,0,0];
 		for(var i in dati){
-			for(var x in dati[i]){
-				if(x == "Titolo"){
-					switch(dati[i][x]){
-						case 0: 
-							a++;
-							break;
-						case 1:
-							le++;
-							break;
-						case 2:
-							lm++;
-							break;
-						case 3:
-							d++;
-							break;
-						case 4:
-							la++;
-							break;
-					}
-				}
-			}		
+			var k = dati[i]["Titolo"];
+			np[k]++;
 		}
-	document.getElementById("dati3").innerHTML = an+a+" "+lie+le+" "+lim+lm+" "+di+d+" "+lau+la;
+		var s = "";
+		for(var i in np){
+			s += titStudio[i] + ": " + np[i] + "<br>";
+		}
+	document.getElementById("dati3").innerHTML = s;
 	}
 	else{
 		document.getElementById("dati3").innerHTML = "";
